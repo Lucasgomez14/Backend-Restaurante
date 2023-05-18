@@ -3,12 +3,7 @@ using Application.Interfaces;
 using Application.Request;
 using Application.Response;
 using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-//Falta agregar las validaciones
+
 namespace Application.UseCase
 {
     public class MercaderiaService : IMercaderiaService
@@ -16,12 +11,14 @@ namespace Application.UseCase
         private readonly IMercaderiaQuery _query;
         private readonly IMercaderiaCommand _command;
         private readonly ITipoMercaderiaService _serviceTipMer;
+        private readonly IComandaQuery _comandaQuery;
 
-        public MercaderiaService(IMercaderiaQuery query, IMercaderiaCommand command, ITipoMercaderiaService serviceTipMer)
+        public MercaderiaService(IMercaderiaQuery query, IMercaderiaCommand command, ITipoMercaderiaService serviceTipMer, IComandaQuery comandaQuery)
         {
             _query = query;
             _command = command;
             _serviceTipMer = serviceTipMer;
+            _comandaQuery = comandaQuery;
         }
 
         public async Task<MercaderiaResponse> RegisterMercaderia(MercaderiaRequest unaMercaderia)
@@ -59,14 +56,8 @@ namespace Application.UseCase
                     Imagen = mercaderiaInsertar.Imagen,
                 });
             }
-            catch (Conflict ex)
-            {
-                throw new Conflict("Error en la implementación a la base de datos: " + ex.Message);
-            }
-            catch (ExceptionSintaxError)
-            {
-                throw new ExceptionSintaxError("Error en la sintaxis de la mercadería en el registro");
-            }
+            catch (Conflict ex) { throw new Conflict("Error en la implementación a la base de datos: " + ex.Message); }
+            catch (ExceptionSintaxError) { throw new ExceptionSintaxError("Error en la sintaxis de la mercadería en el registro"); }
 
         }
 
@@ -75,14 +66,10 @@ namespace Application.UseCase
             try
             {
                 mercaderia.Nombre = char.ToUpper(mercaderia.Nombre[0]) + mercaderia.Nombre.Substring(1);
-                if (await VerifyHTTP409ModifyAsync(mercaderia.Nombre, mercaderiaId))
-                {
-                    throw new Conflict("Existe otra mercadería con el nombre a modificar");
-                }
-                if (await VerifyHTTP404Async(mercaderiaId)) 
-                {
-                    throw new ExceptionNotFound("No existe una mercadería con ese Id");
-                }
+
+                if (await VerifyHTTP404Async(mercaderiaId)) { throw new ExceptionNotFound("No existe una mercadería con ese Id"); }
+                if (await VerifyHTTP409ModifyAsync(mercaderia.Nombre, mercaderiaId)) { throw new Conflict("Existe otra mercadería con el nombre a modificar"); }
+
                 var unaMercaderia = await _command.UpdateMercaderia(mercaderiaId, mercaderia);
                 return await Task.FromResult(new MercaderiaResponse
                 {
@@ -99,18 +86,9 @@ namespace Application.UseCase
                     Imagen = unaMercaderia.Imagen,
                 });
             }
-            catch (Conflict ex)
-            {
-                throw new Conflict("Error en la implementación a la base de datos: " + ex.Message);
-            }
-            catch (ExceptionNotFound ex)
-            {
-                throw new ExceptionNotFound("Error la busqueda en la base de datos: " + ex.Message);
-            }
-            catch (ExceptionSintaxError)
-            {
-                throw new ExceptionSintaxError("Error en la sintaxis de la mercadería a modificar");
-            }
+            catch (Conflict ex) { throw new Conflict("Error en la implementación a la base de datos: " + ex.Message); }
+            catch (ExceptionNotFound ex) { throw new ExceptionNotFound("Error la busqueda en la base de datos: " + ex.Message); }
+            catch (ExceptionSintaxError) { throw new ExceptionSintaxError("Error en la sintaxis de la mercadería a modificar"); }
 
         }
 
@@ -118,12 +96,11 @@ namespace Application.UseCase
         public async Task<MercaderiaResponse> DeleteMercaderia(int mercaderiaId)
         {
             try
-            {    
-                if (await VerifyHTTP404Async(mercaderiaId))
-                {
-                    throw new Conflict("No existe una mercadería con ese Id");
-                    
-                }
+            {
+                if (await VerifyHTTP404Async(mercaderiaId)) { throw new Conflict("No existe una mercadería con ese Id"); }
+
+                if (await VerifyIfExistInComanda(mercaderiaId)) { throw new Conflict("No puede borrarse la mercadería debido a que una comanda la contiene en su pedido"); }
+
                 Mercaderia mercaderiaARemover = await _command.RemoveMercaderia(await _query.GetMercaderiaById(mercaderiaId));
                 return new MercaderiaResponse
                 {
@@ -140,16 +117,8 @@ namespace Application.UseCase
                     Imagen = mercaderiaARemover.Imagen,
                 };
             }
-            catch (Conflict ex)
-            {
-                throw new Conflict("Error en la base de datos: " + ex.Message);
-            }
-            catch (ExceptionSintaxError)
-            {
-                throw new ExceptionSintaxError("Id incorrecto");
-            }
-            
-
+            catch (Conflict ex) { throw new Conflict("Error en la base de datos: " + ex.Message); }
+            catch (ExceptionSintaxError) { throw new ExceptionSintaxError("Id incorrecto"); }
         }
 
 
@@ -157,10 +126,8 @@ namespace Application.UseCase
         {
             try
             {
-                if (await VerifyHTTP404Async(mercaderiaId))
-                {
-                    throw new ExceptionNotFound("No existe una mercadería con ese Id");
-                }
+                if (await VerifyHTTP404Async(mercaderiaId)) { throw new ExceptionNotFound("No existe una mercadería con ese Id"); }
+
                 Mercaderia unaMercaderia = await _query.GetMercaderiaById(mercaderiaId);
                 return new MercaderiaResponse
                 {
@@ -178,14 +145,8 @@ namespace Application.UseCase
 
                 };
             }
-            catch (ExceptionSintaxError)
-            {
-                throw new ExceptionSintaxError("Error en la sintaxis del id a buscar");
-            }
-            catch (ExceptionNotFound ex)
-            {
-                throw new ExceptionNotFound("Error en la búsqueda en la base de datos: " + ex.Message);
-            }
+            catch (ExceptionSintaxError) { throw new ExceptionSintaxError("Error en la sintaxis del id a buscar"); }
+            catch (ExceptionNotFound ex) { throw new ExceptionNotFound("Error en la búsqueda en la base de datos: " + ex.Message); }
 
         }
         public async Task<List<MercaderiaGetResponse>> GetMercaderiaByFilter(int? tipoMercaderia, string? nombre, string? orden)
@@ -195,6 +156,7 @@ namespace Application.UseCase
                 List<MercaderiaGetResponse> listaMerGetResponse = new();
                 List<Mercaderia> listaMercaderia = await _query.GetListMercaderia();
                 bool flag = true;
+
                 if (listaMercaderia.Count() > 0)
                 {
                     if (orden == null || !orden.ToUpper().Equals("ASC") && !orden.ToUpper().Equals("DES"))
@@ -228,23 +190,14 @@ namespace Application.UseCase
 
                     return listaMerGetResponse;
                 }
-                else
-                {
-                    throw new ExceptionNotFound("Base de datos vacía");
-                }
+                else { throw new ExceptionNotFound("Base de datos vacía"); }
             }
-            catch (ExceptionSintaxError)
-            {
-                throw new ExceptionSintaxError("Error en la sintaxis");
-            }
-            catch (ExceptionNotFound ex)
-            {
-                throw new ExceptionSintaxError("Error: " + ex.Message);
-            }
+            catch (ExceptionSintaxError) { throw new ExceptionSintaxError("Error en la sintaxis"); }
+            catch (ExceptionNotFound ex) { throw new ExceptionSintaxError("Error: " + ex.Message); }
         }
 
         //Métodos Para GetMercaderiaByFilter
-        private async Task GenerateMercaderiaResponse(Mercaderia unaMercaderia, List<MercaderiaGetResponse> listaMerGetResponse) 
+        private async Task GenerateMercaderiaResponse(Mercaderia unaMercaderia, List<MercaderiaGetResponse> listaMerGetResponse)
         {
             var unaMercaderiaGetResponse = new MercaderiaGetResponse
             {
@@ -286,10 +239,10 @@ namespace Application.UseCase
 
         //Métodos para el error HTTP 409
 
-        private async Task<bool> VerifyHTTP409InsertAsync (Mercaderia unaMercaderia)
+        private async Task<bool> VerifyHTTP409InsertAsync(Mercaderia unaMercaderia)
         {
             List<Mercaderia> listaMercaderias = await _query.GetListMercaderia();
-            foreach (Mercaderia mercaderia in listaMercaderias) 
+            foreach (Mercaderia mercaderia in listaMercaderias)
             {
                 if (mercaderia.Nombre.Equals(unaMercaderia.Nombre))
                 {
@@ -317,6 +270,21 @@ namespace Application.UseCase
             if (await _query.GetMercaderiaById(mercaderiaId) == null)
             {
                 return true;
+            }
+            return false;
+        }
+
+        //tendría que traer todas las comandas y de ahí que revise la lista de comandamercaderia
+        //y si encuentra el mismo id con el de la lista, debería devolver true
+        private async Task<bool> VerifyIfExistInComanda(int mercaderiaId)
+        {
+            List<Comanda> ListaComandas = await _comandaQuery.GetListComanda();
+            foreach (Comanda unaComanda in ListaComandas)
+            {
+                foreach (ComandaMercaderia unaComandaMercaderia in unaComanda.ComandasMercaderia)
+                {
+                    if (mercaderiaId == unaComandaMercaderia.MercaderiaId) { return true; }
+                }
             }
             return false;
         }

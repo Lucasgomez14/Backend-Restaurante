@@ -2,15 +2,7 @@
 using Application.Interfaces;
 using Application.Request;
 using Application.Response;
-using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-//Hola Lucas, el 409 se define cuando se quiere insertar una mercadería con el mismo nombre.
-//Por lo que lo correcto seria. Hacer primero una búsqueda en base de datos para validar que no exista.
-//Luego el 400 se debe dar cuando te envian datos incorrectos o que no cumplen los estándares por ejemplo
-//un precio que no sea un numero o una receta que supere los caracteres permitidos en base de datos
 
 namespace TP2_Individual.Controllers
 {
@@ -38,7 +30,7 @@ namespace TP2_Individual.Controllers
             catch (ExceptionSintaxError ex)
             {
                 return new JsonResult(new BadRequest { Message = ex.Message }) { StatusCode = 400 };
-            }    
+            }
         }
 
 
@@ -71,7 +63,7 @@ namespace TP2_Individual.Controllers
         [ProducesResponseType(typeof(BadRequest), 404)]
         public async Task<IActionResult> GetMercaderiaById(int Id)
         {
-            try 
+            try
             {
                 var result = await _service.GetMercaderiaById(Id);
                 return new JsonResult(result) { StatusCode = 200 };
@@ -84,7 +76,7 @@ namespace TP2_Individual.Controllers
             {
                 return new JsonResult(new BadRequest { Message = ex.Message }) { StatusCode = 404 };
             }
-            
+
         }
 
 

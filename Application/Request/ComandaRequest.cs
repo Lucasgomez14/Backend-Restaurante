@@ -1,10 +1,4 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//request es pedir
+﻿//request es pedir
 namespace Application.Request
 {
     public class ComandaRequest

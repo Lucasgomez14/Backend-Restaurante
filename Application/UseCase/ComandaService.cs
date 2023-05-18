@@ -2,19 +2,8 @@
 using Application.Interfaces;
 using Application.Interfaces.ComandaMercaderia;
 using Application.Request;
-using Application.response;
 using Application.Response;
-using Application.UseCase;
 using Domain.Entities;
-using Microsoft.Identity.Client;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Application.UseCase
 {
@@ -45,7 +34,7 @@ namespace Application.UseCase
                 List<int> listaMercaderiasId = unaComanda.ListaMercaderiasId;
                 List<Mercaderia> listaMercaderias = new List<Mercaderia>();
                 List<ComandaMercaderiaResponse> listaComMerRes = new List<ComandaMercaderiaResponse>();
-                if (unaComanda.FormaEntregaId < 1 && unaComanda.FormaEntregaId > 3) 
+                if (unaComanda.FormaEntregaId < 1 && unaComanda.FormaEntregaId > 3)
                 {
                     throw new ExceptionSintaxError("No existe la forma de entrega");
                 }
@@ -109,10 +98,10 @@ namespace Application.UseCase
                     Fecha = nuevaComanda.Fecha.ToString("dd/MM/yyyy"),
                 };
             }
-            catch(ExceptionSintaxError ex)
+            catch (ExceptionSintaxError ex)
             {
-                throw new ExceptionSintaxError("Error en la sintaxis: "+ ex.Message);
-            }    
+                throw new ExceptionSintaxError("Error en la sintaxis: " + ex.Message);
+            }
         }
         public async Task<List<ComandaGetResponse>> GetAllComandaByDate(string fechaString)
         {

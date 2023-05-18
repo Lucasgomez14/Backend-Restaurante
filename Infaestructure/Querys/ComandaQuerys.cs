@@ -3,11 +3,6 @@ using Application.Interfaces;
 using Domain.Entities;
 using Infaestructure.Persistence.Config;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infaestructure.Querys
 {
@@ -51,19 +46,22 @@ namespace Infaestructure.Querys
             {
                 throw new ExceptionSintaxError("No se encontró la comanda solicitada");
             }
-            
+
         }
 
         public async Task<List<Comanda>> GetListComanda()
         {
             try
             {
-                return await _context.Comanda.ToListAsync();
+                List<Comanda> todasLasComandas = await _context.Comanda
+                .Include(c => c.ComandasMercaderia)
+                .ToListAsync();
+                return todasLasComandas;
             }
             catch (DbUpdateException)
             {
                 throw new ExceptionSintaxError("No existen comandas en la base");
-            }            
+            }
         }
     }
 }

@@ -4,7 +4,6 @@ using Application.Request;
 using Domain.Entities;
 using Infaestructure.Persistence.Config;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 namespace Infaestructure.Command
 {
@@ -24,9 +23,9 @@ namespace Infaestructure.Command
                 await _context.SaveChangesAsync();
                 return mercaderia;
             }
-            catch (DbUpdateException )
+            catch (DbUpdateException)
             {
-                throw new Conflict ("El tipo de mercadería recibido no existe en la base de datos");
+                throw new Conflict("El tipo de mercadería recibido no existe en la base de datos");
             }
         }
 
