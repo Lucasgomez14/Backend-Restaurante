@@ -147,7 +147,7 @@ namespace Application.UseCase
                 }
                 return ListaComandaGetResponse;
             }
-            catch (ExceptionSintaxError)
+            catch (Exception)
             {
                 throw new ExceptionSintaxError("Error en la sintaxis ingresada para la fecha");
             }
