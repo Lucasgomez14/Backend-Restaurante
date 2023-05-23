@@ -3514,11 +3514,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Domain\\Domain.csproj",
+      "projectUniqueName": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Domain\\Domain.csproj",
+      "projectPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-      "outputPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Domain\\obj\\",
+      "outputPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

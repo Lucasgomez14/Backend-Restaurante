@@ -55,3 +55,22 @@ E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pru
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Infaestructure\obj\Debug\net6.0\Infaestructure.pdb
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Infaestructure\obj\Debug\net6.0\Infaestructure.genruntimeconfig.cache
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Infaestructure\obj\Debug\net6.0\ref\Infaestructure.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Infaestructure.deps.json
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Infaestructure.runtimeconfig.json
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Infaestructure.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Infaestructure.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Application.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Domain.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Application.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\bin\Debug\net6.0\Domain.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.csproj.AssemblyReference.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.AssemblyInfoInputs.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.AssemblyInfo.cs
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.csproj.CoreCompileInputs.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.csproj.CopyComplete
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\refint\Infaestructure.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\Infaestructure.genruntimeconfig.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Infaestructure\obj\Debug\net6.0\ref\Infaestructure.dll

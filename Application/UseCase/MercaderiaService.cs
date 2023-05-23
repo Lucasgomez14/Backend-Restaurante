@@ -159,7 +159,7 @@ namespace Application.UseCase
 
                 if (listaMercaderia.Count() > 0)
                 {
-                    if (orden == null || !orden.ToUpper().Equals("ASC") && !orden.ToUpper().Equals("DES"))
+                    if (orden == null || !orden.ToUpper().Equals("ASC") || !orden.ToUpper().Equals("DES"))
                     {
                         orden = "ASC";
                     }
@@ -273,9 +273,6 @@ namespace Application.UseCase
             }
             return false;
         }
-
-        //tendría que traer todas las comandas y de ahí que revise la lista de comandamercaderia
-        //y si encuentra el mismo id con el de la lista, debería devolver true
         private async Task<bool> VerifyIfExistInComanda(int mercaderiaId)
         {
             List<Comanda> ListaComandas = await _comandaQuery.GetListComanda();

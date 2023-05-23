@@ -40,3 +40,17 @@ E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pru
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Domain\obj\Debug\net6.0\Domain.pdb
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Domain\obj\Debug\net6.0\ref\Domain.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\bin\Debug\net6.0\Domain.deps.json
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\bin\Debug\net6.0\Domain.runtimeconfig.json
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\bin\Debug\net6.0\Domain.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\bin\Debug\net6.0\Domain.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\refint\Domain.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\ref\Domain.dll

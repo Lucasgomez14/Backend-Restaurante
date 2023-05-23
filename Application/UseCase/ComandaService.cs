@@ -34,7 +34,7 @@ namespace Application.UseCase
                 List<int> listaMercaderiasId = unaComanda.ListaMercaderiasId;
                 List<Mercaderia> listaMercaderias = new List<Mercaderia>();
                 List<ComandaMercaderiaResponse> listaComMerRes = new List<ComandaMercaderiaResponse>();
-                if (unaComanda.FormaEntregaId < 1 && unaComanda.FormaEntregaId > 3)
+                if (unaComanda.FormaEntregaId < 1 || unaComanda.FormaEntregaId > 3)
                 {
                     throw new ExceptionSintaxError("No existe la forma de entrega");
                 }
@@ -107,7 +107,7 @@ namespace Application.UseCase
         {
             try
             {
-                DateTime fecha = DateTime.ParseExact(fechaString, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime fecha = DateTime.ParseExact(fechaString, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 List<MercaderiaGetResponse> ListaTipoMercaderiaGetResponse = new List<MercaderiaGetResponse>();
                 List<ComandaGetResponse> ListaComandaGetResponse = new List<ComandaGetResponse>();
 

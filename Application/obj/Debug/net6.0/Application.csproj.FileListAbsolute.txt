@@ -49,3 +49,20 @@ E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pru
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Application\obj\Debug\net6.0\Application.genruntimeconfig.cache
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2 Individual pruebas\Application\obj\Debug\net6.0\ref\Application.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\bin\Debug\net6.0\Application.deps.json
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\bin\Debug\net6.0\Application.runtimeconfig.json
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\bin\Debug\net6.0\Application.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\bin\Debug\net6.0\Application.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\bin\Debug\net6.0\Domain.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\bin\Debug\net6.0\Domain.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\refint\Application.dll
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.pdb
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\Application.genruntimeconfig.cache
+E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Application\obj\Debug\net6.0\ref\Application.dll

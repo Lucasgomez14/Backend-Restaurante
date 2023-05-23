@@ -3552,11 +3552,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Infaestructure\\Infaestructure.csproj",
+      "projectUniqueName": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Infaestructure\\Infaestructure.csproj",
       "projectName": "Infaestructure",
-      "projectPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Infaestructure\\Infaestructure.csproj",
+      "projectPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Infaestructure\\Infaestructure.csproj",
       "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-      "outputPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Infaestructure\\obj\\",
+      "outputPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Infaestructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3573,8 +3573,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Application\\Application.csproj": {
-              "projectPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Restaurante\\Application\\Application.csproj"
+            "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Application\\Application.csproj": {
+              "projectPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Application\\Application.csproj"
             }
           }
         }
