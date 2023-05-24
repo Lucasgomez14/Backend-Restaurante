@@ -21,14 +21,19 @@ builder.Services.AddDbContext<RestauranteBD>(options => options.UseSqlServer(con
 builder.Services.AddScoped<IComandaService, ComandaService>();
 builder.Services.AddScoped<IComandaQuery, ComandaQuerys>();
 builder.Services.AddScoped<IComandaCommand, ComandaCommand>();
+
 builder.Services.AddScoped<IMercaderiaService, MercaderiaService>();
 builder.Services.AddScoped<IMercaderiaQuery, MercaderiaQuery>();
 builder.Services.AddScoped<IMercaderiaCommand, MercaderiaCommand>();
+
 builder.Services.AddScoped<ITipoMercaderiaQuery, TipoMercaderiaQuery>();
 builder.Services.AddScoped<ITipoMercaderiaService, TipoMercaderiaService>();
+
 builder.Services.AddScoped<IComandaMercaderiaService, ComandaMercaderiaService>();
 builder.Services.AddScoped<IComandaMercaderiaCommand, ComandaMercaderiaCommand>();
+
 builder.Services.AddScoped<IFormaDeEntregaQuery, FormaDeEntregaQuery>();
+builder.Services.AddScoped<IFormaDeEntregaService, FormaEntregaService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.

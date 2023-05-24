@@ -17,7 +17,7 @@ namespace TP2_Individual.Controllers
             _service = service;
         }
         [HttpGet]
-        [ProducesResponseType(typeof(ComandaResponse), 200)]
+        [ProducesResponseType(typeof(List<ComandaResponse>), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         public async Task<IActionResult> GetComandaByDate(string fecha)
         {
@@ -46,7 +46,7 @@ namespace TP2_Individual.Controllers
             {
                 return new JsonResult(new BadRequest { Message = ex.Message }) { StatusCode = 400 };
             }
-
+            
         }
 
         [HttpGet("{Id}")]

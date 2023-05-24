@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\Domain.csproj": {}
+    "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\Domain.csproj": {
+    "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\Domain.csproj",
+        "projectPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Domain\\obj\\",
+        "outputPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

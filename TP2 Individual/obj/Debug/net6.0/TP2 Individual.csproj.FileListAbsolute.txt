@@ -370,3 +370,96 @@ E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\TP2 Individual
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\TP2 Individual\obj\Debug\net6.0\TP2 Individual.pdb
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\TP2 Individual\obj\Debug\net6.0\TP2 Individual.genruntimeconfig.cache
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\TP2 Individual\obj\Debug\net6.0\ref\TP2 Individual.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\appsettings.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\appsettings.Development.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\TP2 Individual.exe
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\TP2 Individual.deps.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\TP2 Individual.runtimeconfig.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\TP2 Individual.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\TP2 Individual.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Azure.Core.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Azure.Identity.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Humanizer.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Mono.TextTemplating.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.CodeDom.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Memory.Data.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Text.Json.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Application.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Domain.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Infaestructure.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Infaestructure.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Application.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\bin\Debug\net6.0\Domain.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.csproj.AssemblyReference.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.GeneratedMSBuildEditorConfig.editorconfig
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.AssemblyInfoInputs.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.AssemblyInfo.cs
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.csproj.CoreCompileInputs.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.MvcApplicationPartsAssemblyInfo.cs
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.MvcApplicationPartsAssemblyInfo.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets\msbuild.TP2 Individual.Microsoft.AspNetCore.StaticWebAssets.props
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets\msbuild.build.TP2 Individual.props
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.TP2 Individual.props
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.TP2 Individual.props
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets.pack.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets.build.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\staticwebassets.development.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\scopedcss\bundle\TP2 Individual.styles.css
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.csproj.CopyComplete
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\refint\TP2 Individual.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\TP2 Individual.genruntimeconfig.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\TP2 Individual\obj\Debug\net6.0\ref\TP2 Individual.dll

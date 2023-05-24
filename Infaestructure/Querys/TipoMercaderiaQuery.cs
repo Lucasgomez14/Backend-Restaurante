@@ -17,5 +17,10 @@ namespace Infaestructure.Querys
         {
             return await _context.TipoMercaderia.SingleAsync(x => x.TipoMercaderiaId.Equals(TipoMercaderiaId));
         }
+
+        public async Task<int> GetCantidadTotal()
+        {
+            return await _context.TipoMercaderia.CountAsync();     
+        }
     }
 }

@@ -4,7 +4,8 @@ using Application.Interfaces.ComandaMercaderia;
 using Application.Request;
 using Application.Response;
 using Domain.Entities;
-
+using System.Globalization;
+//Por las dudas ver si falta algo de validación
 namespace Application.UseCase
 {
     public class ComandaService : IComandaService
@@ -14,15 +15,15 @@ namespace Application.UseCase
         private readonly IComandaMercaderiaService _serviceComandaMercaderia;
         private readonly ITipoMercaderiaService _serviceTipMer;
         private readonly IMercaderiaQuery _queryMercaderia;
-        private readonly IFormaDeEntregaQuery _formaDeEntregaQuery;
+        private readonly IFormaDeEntregaService _formaDeEntregaService;
 
-        public ComandaService(IComandaCommand comandaCommand, IComandaQuery comandaQuery, IComandaMercaderiaService comandaMercaderiaService, IMercaderiaQuery mercaderiaQuery, IFormaDeEntregaQuery formaDeEntregaQuery, ITipoMercaderiaService serviceTipoMercaderia)
+        public ComandaService(IComandaCommand comandaCommand, IComandaQuery comandaQuery, IComandaMercaderiaService comandaMercaderiaService, IMercaderiaQuery mercaderiaQuery, IFormaDeEntregaService formaDeEntregaService, ITipoMercaderiaService serviceTipoMercaderia)
         {
             _command = comandaCommand;
             _query = comandaQuery;
             _serviceComandaMercaderia = comandaMercaderiaService;
             _queryMercaderia = mercaderiaQuery;
-            _formaDeEntregaQuery = formaDeEntregaQuery;
+            _formaDeEntregaService = formaDeEntregaService;
             _serviceTipMer = serviceTipoMercaderia;
         }
 
@@ -31,25 +32,13 @@ namespace Application.UseCase
             try
             {
                 int precioTotal = 0;
-                List<int> listaMercaderiasId = unaComanda.ListaMercaderiasId;
                 List<Mercaderia> listaMercaderias = new List<Mercaderia>();
                 List<ComandaMercaderiaResponse> listaComMerRes = new List<ComandaMercaderiaResponse>();
-                if (unaComanda.FormaEntregaId < 1 || unaComanda.FormaEntregaId > 3)
+                await Verify400SintaxFormaEntrega(unaComanda.FormaEntregaId);
+
+                foreach (int idMercaderia in unaComanda.ListaMercaderiasId)
                 {
-                    throw new ExceptionSintaxError("No existe la forma de entrega");
-                }
-                foreach (int idMercaderia in listaMercaderiasId)
-                {
-                    Mercaderia mercaderia = await _queryMercaderia.GetMercaderiaById(idMercaderia);
-                    if (mercaderia != null)
-                    {
-                        precioTotal += mercaderia.Precio;
-                        listaMercaderias.Add(mercaderia);
-                    }
-                    else
-                    {
-                        throw new ExceptionSintaxError("Una mercaderia es inválida");
-                    }
+                    await Verify400SintaxComandaAndAdd(idMercaderia, listaMercaderias, precioTotal);   
                 }
                 var nuevaComanda = new Comanda
                 {
@@ -92,7 +81,7 @@ namespace Application.UseCase
                     FormaEntregaResponse = new FormaEntregaResponse
                     {
                         id = nuevaComanda.FormaEntregaId,
-                        descripcion = _formaDeEntregaQuery.GetFormaEntregaById(nuevaComanda.FormaEntregaId).Result.Descripcion
+                        descripcion = _formaDeEntregaService.GetFormaEntregaById(nuevaComanda.FormaEntregaId).Result.Descripcion
                     },
                     PrecioTotal = nuevaComanda.PrecioTotal,
                     Fecha = nuevaComanda.Fecha.ToString("dd/MM/yyyy"),
@@ -107,7 +96,8 @@ namespace Application.UseCase
         {
             try
             {
-                DateTime fecha = DateTime.ParseExact(fechaString, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime fecha = ParseDatetime(fechaString);
+
                 List<MercaderiaGetResponse> ListaTipoMercaderiaGetResponse = new List<MercaderiaGetResponse>();
                 List<ComandaGetResponse> ListaComandaGetResponse = new List<ComandaGetResponse>();
 
@@ -137,7 +127,7 @@ namespace Application.UseCase
                         formaEntrega = new FormaEntregaResponse
                         {
                             id = unaComanda.FormaEntregaId,
-                            descripcion = _formaDeEntregaQuery.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
+                            descripcion = _formaDeEntregaService.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
                         },
                         PrecioTotal = unaComanda.PrecioTotal,
                         Fecha = unaComanda.Fecha.ToString("dd/MM/yyyy"),
@@ -147,9 +137,9 @@ namespace Application.UseCase
                 }
                 return ListaComandaGetResponse;
             }
-            catch (Exception)
+            catch (ExceptionSintaxError ex)
             {
-                throw new ExceptionSintaxError("Error en la sintaxis ingresada para la fecha");
+                throw new ExceptionSintaxError("Error en la sintaxis ingresada para la fecha: "+ ex.Message);
             }
 
 
@@ -159,6 +149,7 @@ namespace Application.UseCase
         {
             try
             {
+                if(!Guid.TryParse(comandaId.ToString(), out comandaId)) { throw new ExceptionSintaxError(); }
                 if (await VerifyHTTP404Async(comandaId))
                 {
                     throw new ExceptionNotFound("No existe una mercadería con ese Id");
@@ -189,7 +180,7 @@ namespace Application.UseCase
                     formaEntrega = new FormaEntregaResponse
                     {
                         id = unaComanda.FormaEntregaId,
-                        descripcion = _formaDeEntregaQuery.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
+                        descripcion = _formaDeEntregaService.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
                     },
                     PrecioTotal = unaComanda.PrecioTotal,
                     Fecha = unaComanda.Fecha.ToString("dd/MM/yyyy"),
@@ -198,7 +189,7 @@ namespace Application.UseCase
             }
             catch (ExceptionSintaxError)
             {
-                throw new ExceptionSintaxError("Error en la sintaxis del id a buscar");
+                throw new ExceptionSintaxError("Sintaxis inválida para el id a buscar, pruebe ingresar el id con el formato válido");
             }
             catch (ExceptionNotFound ex)
             {
@@ -214,6 +205,42 @@ namespace Application.UseCase
                 return true;
             }
             return false;
+        }
+
+        private DateTime ParseDatetime(string fechaString)
+        {
+            DateTime fecha;
+            if (DateTime.TryParseExact(fechaString, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
+            {
+                return fecha;
+            }
+            if (DateTime.TryParseExact(fechaString,"dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
+            { return fecha; }
+            if (DateTime.TryParseExact(fechaString, "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
+            { return fecha; }
+            else
+            {
+                throw new ExceptionSintaxError("Fecha inválida, pruebe con dd-mm-aaaa o aaaa-mm-dd");
+            }
+        }
+
+        private async Task Verify400SintaxFormaEntrega(int formaEntregaId)
+        {
+            if (!int.TryParse(formaEntregaId.ToString(), out formaEntregaId)) { throw new ExceptionSintaxError("El tipo de forma de entrega no es un valor válido, pruebe introduciendo un entero"); }
+            if (formaEntregaId < 1 || formaEntregaId > await _formaDeEntregaService.GetFormaEntregaTotal()){ throw new ExceptionSintaxError("No existe la forma de entrega ingresada"); }
+        }
+        private async Task Verify400SintaxComandaAndAdd (int idMercaderia, List<Mercaderia> listaMercaderias, int precioTotal)
+        {
+            Mercaderia mercaderia = await _queryMercaderia.GetMercaderiaById(idMercaderia);
+            if (mercaderia != null)
+            {
+                precioTotal += mercaderia.Precio;
+                listaMercaderias.Add(mercaderia);
+            }
+            else
+            {
+                throw new ExceptionSintaxError("Una mercaderia es inválida");
+            }
         }
 
     }

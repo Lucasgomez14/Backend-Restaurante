@@ -17,5 +17,9 @@ namespace Infaestructure.Querys
         {
             return await _context.FormasEntrega.SingleAsync(x => x.FormaEntregaId == id);
         }
+        public async Task<int> GetFormaEntregaTotal()
+        {
+            return await _context.FormasEntrega.CountAsync();
+        }
     }
 }

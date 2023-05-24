@@ -54,3 +54,17 @@ E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Deb
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.pdb
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
 E:\facultad\cuarto año\primer cuatrimestre\proyecto software\TP2\Domain\obj\Debug\net6.0\ref\Domain.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\bin\Debug\net6.0\Domain.runtimeconfig.json
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\bin\Debug\net6.0\Domain.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\bin\Debug\net6.0\Domain.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.pdb
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
+D:\facultad\cuarto año\proyecto software\TP2 Individual\Domain\obj\Debug\net6.0\ref\Domain.dll

@@ -2,6 +2,9 @@
 {
     public class ExceptionSintaxError : Exception
     {
+        public ExceptionSintaxError() : base()
+        {
+        }
         public ExceptionSintaxError(string message) : base(message)
         {
         }

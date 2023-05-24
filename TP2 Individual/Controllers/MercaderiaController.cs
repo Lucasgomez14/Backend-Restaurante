@@ -18,7 +18,7 @@ namespace TP2_Individual.Controllers
 
 
         [HttpGet]
-        [ProducesResponseType(typeof(MercaderiaGetResponse), 200)]
+        [ProducesResponseType(typeof(List<MercaderiaGetResponse>), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         public async Task<IActionResult> GetMercaderiaByfilter(int? tipo, string? nombre, string? orden)
         {
@@ -111,6 +111,7 @@ namespace TP2_Individual.Controllers
         [HttpDelete("{Id}")]
         [ProducesResponseType(typeof(MercaderiaResponse), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
+        [ProducesResponseType(typeof(BadRequest), 404)]
         [ProducesResponseType(typeof(BadRequest), 409)]
         public async Task<IActionResult> DeleteMercaderia(int Id)
         {
@@ -122,6 +123,10 @@ namespace TP2_Individual.Controllers
             catch (ExceptionSintaxError ex)
             {
                 return new JsonResult(new BadRequest { Message = ex.Message }) { StatusCode = 400 };
+            }
+            catch (ExceptionNotFound ex)
+            {
+                return new JsonResult(new BadRequest { Message = ex.Message }) { StatusCode = 404 };
             }
             catch (Conflict ex)
             {

@@ -16,5 +16,10 @@ namespace Application.UseCase
         {
             return await _query.GetTipoMercaderiaById(TipoMercaderiaId);
         }
+        public async Task<int> GetCantidadTipoMercaderias()
+        {
+            return await _query.GetCantidadTotal();
+        }
+
     }
 }

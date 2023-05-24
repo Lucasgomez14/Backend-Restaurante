@@ -18,8 +18,7 @@ namespace Infaestructure.Querys
         {
             try
             {
-                Mercaderia result = await _context.Mercaderia.SingleOrDefaultAsync(x => x.MercaderiaID == MercaderiaId);
-                return result;
+                return await _context.Mercaderia.SingleOrDefaultAsync(x => x.MercaderiaID == MercaderiaId);
             }
             catch (DbUpdateException)
             {
@@ -30,6 +29,14 @@ namespace Infaestructure.Querys
         public async Task<List<Mercaderia>> GetListMercaderia()
         {
             return await _context.Mercaderia.ToListAsync();
+        }
+        public async Task<List<Mercaderia>> SearchLikeName(string nombre)
+        {
+            List<Mercaderia> results = await _context.Mercaderia
+                .Where(m => m.Nombre.Contains(nombre))
+                .ToListAsync();
+
+            return results;
         }
     }
 }

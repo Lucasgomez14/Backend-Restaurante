@@ -3784,11 +3784,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\TP2 Individual\\TP2 Individual.csproj",
+      "projectUniqueName": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\TP2 Individual\\TP2 Individual.csproj",
       "projectName": "TP2 Individual",
-      "projectPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\TP2 Individual\\TP2 Individual.csproj",
+      "projectPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\TP2 Individual\\TP2 Individual.csproj",
       "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-      "outputPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\TP2 Individual\\obj\\",
+      "outputPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\TP2 Individual\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3805,8 +3805,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Infaestructure\\Infaestructure.csproj": {
-              "projectPath": "E:\\facultad\\cuarto año\\primer cuatrimestre\\proyecto software\\TP2\\Infaestructure\\Infaestructure.csproj"
+            "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Infaestructure\\Infaestructure.csproj": {
+              "projectPath": "D:\\facultad\\cuarto año\\proyecto software\\TP2 Individual\\Infaestructure\\Infaestructure.csproj"
             }
           }
         }
