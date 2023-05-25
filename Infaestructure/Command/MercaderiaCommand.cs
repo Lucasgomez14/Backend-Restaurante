@@ -50,16 +50,14 @@ namespace Infaestructure.Command
             try
             {
                 var mercaderiaToUpdate = await _context.Mercaderia.FirstOrDefaultAsync(m => m.MercaderiaID == mercaderiaId);
-                if (mercaderiaToUpdate != null)
-                {
-                    mercaderiaToUpdate.TipoMercaderiaId = mercaderia.TipoMercaderiaId;
-                    mercaderiaToUpdate.Preparacion = mercaderia.Preparacion;
-                    mercaderiaToUpdate.Imagen = mercaderia.Imagen;
-                    mercaderiaToUpdate.Ingredientes = mercaderia.Ingredientes;
-                    mercaderiaToUpdate.Nombre = mercaderia.Nombre;
-                    mercaderiaToUpdate.Precio = mercaderia.Precio;
-                    await _context.SaveChangesAsync();
-                }
+                mercaderiaToUpdate.TipoMercaderiaId = mercaderia.tipo;
+                mercaderiaToUpdate.Preparacion = mercaderia.preparacion;
+                mercaderiaToUpdate.Imagen = mercaderia.imagen;
+                mercaderiaToUpdate.Ingredientes = mercaderia.ingredientes;
+                mercaderiaToUpdate.Nombre = mercaderia.nombre;
+                mercaderiaToUpdate.Precio = mercaderia.precio;
+                await _context.SaveChangesAsync();
+
                 return mercaderiaToUpdate;
             }
             catch (DbUpdateException)

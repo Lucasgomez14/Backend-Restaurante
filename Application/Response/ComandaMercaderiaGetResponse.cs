@@ -4,6 +4,6 @@
     {
         public int MercaderiaID { get; set; }
         public string Nombre { get; set; }
-        public int Precio { get; set; }
+        public double Precio { get; set; }
     }
 }

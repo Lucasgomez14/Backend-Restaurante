@@ -28,18 +28,18 @@ namespace Application.UseCase
         {
             try
             {
-                try { Verify400Sintax(unaMercaderia); }
+                try { await Verify400Sintax(unaMercaderia); }
                 catch (ExceptionSintaxError ex) { throw new ExceptionSintaxError(ex.Message); }
-                string fixNombre = unaMercaderia.Nombre;
+                string fixNombre = unaMercaderia.nombre;
                 fixNombre = char.ToUpper(fixNombre[0]) + fixNombre.Substring(1);
                 var nuevaMercaderia = new Mercaderia
                 {
                     Nombre = fixNombre,
-                    TipoMercaderiaId = unaMercaderia.TipoMercaderiaId,
-                    Precio = unaMercaderia.Precio,
-                    Ingredientes = unaMercaderia.Ingredientes,
-                    Preparacion = unaMercaderia.Preparacion,
-                    Imagen = unaMercaderia.Imagen,
+                    TipoMercaderiaId = unaMercaderia.tipo,
+                    Precio = unaMercaderia.precio,
+                    Ingredientes = unaMercaderia.ingredientes,
+                    Preparacion = unaMercaderia.preparacion,
+                    Imagen = unaMercaderia.imagen,
                 };
                 
                 if (await VerifyHTTP409InsertAsync(nuevaMercaderia))
@@ -49,17 +49,17 @@ namespace Application.UseCase
                 Mercaderia mercaderiaInsertar = await _command.InsertMercaderia(nuevaMercaderia);
                 return await Task.FromResult(new MercaderiaResponse
                 {
-                    ID = mercaderiaInsertar.MercaderiaID,
-                    Nombre = mercaderiaInsertar.Nombre,
-                    TipoMercaderiaResponse = new TipoMercaderiaResponse
+                    id = mercaderiaInsertar.MercaderiaID,
+                    nombre = mercaderiaInsertar.Nombre,
+                    tipo = new TipoMercaderiaResponse
                     {
                         descripcion = _serviceTipMer.GetTipoMercaderiaById(mercaderiaInsertar.TipoMercaderiaId).Result.Descripcion,
                         id = mercaderiaInsertar.TipoMercaderiaId,
                     },
-                    Precio = mercaderiaInsertar.Precio,
-                    Ingredientes = mercaderiaInsertar.Ingredientes,
-                    Preparacion = mercaderiaInsertar.Preparacion,
-                    Imagen = mercaderiaInsertar.Imagen,
+                    precio = (double)mercaderiaInsertar.Precio,
+                    ingredientes = mercaderiaInsertar.Ingredientes,
+                    preparacion = mercaderiaInsertar.Preparacion,
+                    imagen = mercaderiaInsertar.Imagen,
                 });
             }
             catch (Conflict ex) { throw new Conflict("Error en la implementación a la base de datos: " + ex.Message); }
@@ -71,32 +71,33 @@ namespace Application.UseCase
         {
             try
             {
-                try { Verify400Sintax(mercaderia); }
+                try { await Verify400Sintax(mercaderia); }
+
                 catch (ExceptionSintaxError ex) { throw new ExceptionSintaxError(ex.Message); }
 
-                mercaderia.Nombre = char.ToUpper(mercaderia.Nombre[0]) + mercaderia.Nombre.Substring(1);
+                mercaderia.nombre = char.ToUpper(mercaderia.nombre[0]) + mercaderia.nombre.Substring(1);
                 if (await VerifyHTTP404Async(mercaderiaId)) { throw new ExceptionNotFound("No existe una mercadería con ese Id"); }
-                if (await VerifyHTTP409ModifyAsync(mercaderia.Nombre, mercaderiaId)) { throw new Conflict("Existe otra mercadería con el nombre a modificar"); }
+                if (await VerifyHTTP409ModifyAsync(mercaderia.nombre, mercaderiaId)) { throw new Conflict("Existe otra mercadería con el nombre a modificar"); }
 
                 var unaMercaderia = await _command.UpdateMercaderia(mercaderiaId, mercaderia);
                 return await Task.FromResult(new MercaderiaResponse
                 {
-                    ID = unaMercaderia.MercaderiaID,
-                    Nombre = unaMercaderia.Nombre,
-                    TipoMercaderiaResponse = new TipoMercaderiaResponse
+                    id = unaMercaderia.MercaderiaID,
+                    nombre = unaMercaderia.Nombre,
+                    tipo = new TipoMercaderiaResponse
                     {
                         descripcion = _serviceTipMer.GetTipoMercaderiaById(unaMercaderia.TipoMercaderiaId).Result.Descripcion,
                         id = unaMercaderia.TipoMercaderiaId,
                     },
-                    Precio = unaMercaderia.Precio,
-                    Ingredientes = unaMercaderia.Ingredientes,
-                    Preparacion = unaMercaderia.Preparacion,
-                    Imagen = unaMercaderia.Imagen,
+                    precio = (double)unaMercaderia.Precio,
+                    ingredientes = unaMercaderia.Ingredientes,
+                    preparacion = unaMercaderia.Preparacion,
+                    imagen = unaMercaderia.Imagen,
                 });
             }
             catch (Conflict ex) { throw new Conflict("Error en la implementación a la base de datos: " + ex.Message); }
             catch (ExceptionNotFound ex) { throw new ExceptionNotFound("Error en la busqueda en la base de datos: " + ex.Message); }
-            catch (ExceptionSintaxError) { throw new ExceptionSintaxError("Error en la sintaxis de la mercadería a modificar"); }
+            catch (ExceptionSintaxError ex) { throw new ExceptionSintaxError("Error en la sintaxis de la mercadería a modificar: "+ ex.Message); }
 
         }
 
@@ -114,17 +115,17 @@ namespace Application.UseCase
                 Mercaderia mercaderiaARemover = await _command.RemoveMercaderia(await _query.GetMercaderiaById(mercaderiaId));
                 return new MercaderiaResponse
                 {
-                    ID = mercaderiaARemover.MercaderiaID,
-                    Nombre = mercaderiaARemover.Nombre,
-                    TipoMercaderiaResponse = new TipoMercaderiaResponse
+                    id = mercaderiaARemover.MercaderiaID,
+                    nombre = mercaderiaARemover.Nombre,
+                    tipo = new TipoMercaderiaResponse
                     {
                         descripcion = _serviceTipMer.GetTipoMercaderiaById(mercaderiaARemover.TipoMercaderiaId).Result.Descripcion,
                         id = mercaderiaARemover.TipoMercaderiaId,
                     },
-                    Precio = mercaderiaARemover.Precio,
-                    Ingredientes = mercaderiaARemover.Ingredientes,
-                    Preparacion = mercaderiaARemover.Preparacion,
-                    Imagen = mercaderiaARemover.Imagen,
+                    precio = (double)mercaderiaARemover.Precio,
+                    ingredientes = mercaderiaARemover.Ingredientes,
+                    preparacion = mercaderiaARemover.Preparacion,
+                    imagen = mercaderiaARemover.Imagen,
                 };
             }
             catch (ExceptionNotFound ex) { throw new ExceptionNotFound("Error en la búsqueda del id: " + ex.Message); }
@@ -142,17 +143,17 @@ namespace Application.UseCase
                 Mercaderia unaMercaderia = await _query.GetMercaderiaById(mercaderiaId);
                 return new MercaderiaResponse
                 {
-                    ID = unaMercaderia.MercaderiaID,
-                    Nombre = unaMercaderia.Nombre,
-                    TipoMercaderiaResponse = new TipoMercaderiaResponse
+                    id = unaMercaderia.MercaderiaID,
+                    nombre = unaMercaderia.Nombre,
+                    tipo = new TipoMercaderiaResponse
                     {
                         descripcion = _serviceTipMer.GetTipoMercaderiaById(unaMercaderia.TipoMercaderiaId).Result.Descripcion,
                         id = unaMercaderia.TipoMercaderiaId,
                     },
-                    Precio = unaMercaderia.Precio,
-                    Ingredientes = unaMercaderia.Ingredientes,
-                    Preparacion = unaMercaderia.Preparacion,
-                    Imagen = unaMercaderia.Imagen,
+                    precio =(double) unaMercaderia.Precio,
+                    ingredientes = unaMercaderia.Ingredientes,
+                    preparacion = unaMercaderia.Preparacion,
+                    imagen = unaMercaderia.Imagen,
 
                 };
             }
@@ -162,7 +163,7 @@ namespace Application.UseCase
         }
         public async Task<List<MercaderiaGetResponse>> GetMercaderiaByFilter(int? tipoMercaderia, string? nombre, string? orden)
         {
-            try
+            try 
             {
                 List<MercaderiaGetResponse> listaMerGetResponse = new();
 
@@ -208,7 +209,7 @@ namespace Application.UseCase
             {
                 id = unaMercaderia.MercaderiaID,
                 nombre = unaMercaderia.Nombre,
-                Precio = unaMercaderia.Precio,
+                Precio = (double)unaMercaderia.Precio,
                 tipo = new TipoMercaderiaResponse
                 {
                     id = unaMercaderia.TipoMercaderiaId,
@@ -288,19 +289,21 @@ namespace Application.UseCase
         }
 
         //Método para el error HTTP 400
-        private void Verify400Sintax(MercaderiaRequest mercaderiaRequest)
+        private async Task Verify400Sintax(MercaderiaRequest mercaderiaRequest)
         {
-            if (string.IsNullOrEmpty(mercaderiaRequest.Nombre)) { throw new ExceptionSintaxError("El nombre no es válido"); }
+            if (string.IsNullOrEmpty(mercaderiaRequest.nombre)) { throw new ExceptionSintaxError("El nombre no es válido"); }
             
-            if (!int.TryParse(mercaderiaRequest.TipoMercaderiaId.ToString(), out int tipoMercaderia)) { throw new ExceptionSintaxError("El tipo de mercaderia no es un valor válido, pruebe introduciendo un entero"); }
+            if (!int.TryParse(mercaderiaRequest.tipo.ToString(), out int tipoMercaderia)) { throw new ExceptionSintaxError("El tipo de mercaderia no es un valor válido, pruebe introduciendo un entero"); }
             
-            if (!int.TryParse(mercaderiaRequest.Precio.ToString(), out int precio) || mercaderiaRequest.Precio < 0) { throw new ExceptionSintaxError("El precio no es un valor válido, pruebe introduciendo un entero mayor a 0"); }
+            if (mercaderiaRequest.tipo < 0 || mercaderiaRequest.tipo > await _serviceTipMer.GetCantidadTipoMercaderias())  { throw new ExceptionSintaxError("El tipo de mercaderia no es un valor válido, pruebe introduciendo un entero"); }
+
+            if (!int.TryParse(mercaderiaRequest.precio.ToString(), out int precio) || mercaderiaRequest.precio < 0) { throw new ExceptionSintaxError("El precio no es un valor válido, pruebe introduciendo un entero mayor a 0"); }
             
-            if (string.IsNullOrEmpty(mercaderiaRequest.Ingredientes)) { throw new ExceptionSintaxError("Los ingredientes no son válidos"); }
+            if (string.IsNullOrEmpty(mercaderiaRequest.ingredientes)) { throw new ExceptionSintaxError("Los ingredientes no son válidos"); }
             
-            if (string.IsNullOrEmpty(mercaderiaRequest.Preparacion)) { throw new ExceptionSintaxError("La preparación no es válida"); }
+            if (string.IsNullOrEmpty(mercaderiaRequest.preparacion)) { throw new ExceptionSintaxError("La preparación no es válida"); }
             
-            if (string.IsNullOrEmpty(mercaderiaRequest.Imagen)) { throw new ExceptionSintaxError("La imagen no es válida"); }
+            if (string.IsNullOrEmpty(mercaderiaRequest.imagen)) { throw new ExceptionSintaxError("La imagen no es válida"); }
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public class ComandaResponse
     {
-        public Guid ComandaId { get; set; }
-        public List<ComandaMercaderiaResponse> ListaComandaMercaderiaResponse { get; set; }
-        public FormaEntregaResponse FormaEntregaResponse { get; internal set; }
-        public int PrecioTotal { get; set; }
-        public string Fecha { get; set; }
+        public string id { get; set; }
+        public List<MercaderiaComandaResponse> mercaderias { get; set; }
+        public FormaEntrega formaEntrega { get; internal set; }
+        public double total { get; set; }
+        public string fecha { get; set; }
 
     }
 }

@@ -4,8 +4,10 @@ using Application.Interfaces.ComandaMercaderia;
 using Application.Request;
 using Application.Response;
 using Domain.Entities;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
-//Por las dudas ver si falta algo de validación
+
 namespace Application.UseCase
 {
     public class ComandaService : IComandaService
@@ -33,16 +35,16 @@ namespace Application.UseCase
             {
                 int precioTotal = 0;
                 List<Mercaderia> listaMercaderias = new List<Mercaderia>();
-                List<ComandaMercaderiaResponse> listaComMerRes = new List<ComandaMercaderiaResponse>();
-                await Verify400SintaxFormaEntrega(unaComanda.FormaEntregaId);
+                List<MercaderiaComandaResponse> listaComMerRes = new List<MercaderiaComandaResponse>();
+                await Verify400SintaxFormaEntrega(unaComanda.formaEntrega);
 
-                foreach (int idMercaderia in unaComanda.ListaMercaderiasId)
+                foreach (int idMercaderia in unaComanda.mercaderias)
                 {
                     await Verify400SintaxComandaAndAdd(idMercaderia, listaMercaderias, precioTotal);   
                 }
                 var nuevaComanda = new Comanda
                 {
-                    FormaEntregaId = unaComanda.FormaEntregaId,
+                    FormaEntregaId = unaComanda.formaEntrega,
                     Fecha = DateTime.Now.Date,
                     PrecioTotal = precioTotal,
                     ComandasMercaderia = new List<ComandaMercaderia>()
@@ -61,11 +63,11 @@ namespace Application.UseCase
                         {
 
                             nuevaComanda.ComandasMercaderia.Add(unaComandaMercaderia);
-                            var ComandaMercaderiaResponse = new ComandaMercaderiaResponse
+                            var ComandaMercaderiaResponse = new MercaderiaComandaResponse
                             {
-                                ComandaMercaderiaId = unaComandaMercaderia.ComandaMercaderiaId,
+                                id = unaComandaMercaderia.ComandaMercaderiaId,
                                 nombre = unaMercaderia.Nombre,
-                                precio = unaMercaderia.Precio,
+                                precio = (double)unaMercaderia.Precio,
 
                             };
                             listaComMerRes.Add(ComandaMercaderiaResponse);
@@ -76,15 +78,15 @@ namespace Application.UseCase
                 }
                 return new ComandaResponse
                 {
-                    ComandaId = nuevaComanda.ComandaId,
-                    ListaComandaMercaderiaResponse = listaComMerRes,
-                    FormaEntregaResponse = new FormaEntregaResponse
+                    id = nuevaComanda.ComandaId.ToString(),
+                    mercaderias = listaComMerRes,
+                    formaEntrega = new Response.FormaEntrega
                     {
                         id = nuevaComanda.FormaEntregaId,
                         descripcion = _formaDeEntregaService.GetFormaEntregaById(nuevaComanda.FormaEntregaId).Result.Descripcion
                     },
-                    PrecioTotal = nuevaComanda.PrecioTotal,
-                    Fecha = nuevaComanda.Fecha.ToString("dd/MM/yyyy"),
+                    total = (double)nuevaComanda.PrecioTotal,
+                    fecha = nuevaComanda.Fecha.ToString("dd/MM/yyyy"),
                 };
             }
             catch (ExceptionSintaxError ex)
@@ -92,57 +94,29 @@ namespace Application.UseCase
                 throw new ExceptionSintaxError("Error en la sintaxis: " + ex.Message);
             }
         }
-        public async Task<List<ComandaGetResponse>> GetAllComandaByDate(string fechaString)
+        public async Task<List<ComandaResponse>> GetAllComandaByDate(string? fechaString)
         {
             try
             {
-                DateTime fecha = ParseDatetime(fechaString);
-
-                List<MercaderiaGetResponse> ListaTipoMercaderiaGetResponse = new List<MercaderiaGetResponse>();
-                List<ComandaGetResponse> ListaComandaGetResponse = new List<ComandaGetResponse>();
-
-                foreach (Comanda unaComanda in await _query.GetComandasByDate(fecha))
+                List<MercaderiaComandaResponse> listaMercaderiaComandaResponse = new List<MercaderiaComandaResponse>();
+                List<ComandaResponse> listaComandaResponse = new List<ComandaResponse>();
+                if (fechaString == null)
                 {
-                    foreach (ComandaMercaderia unaComandaMercaderia in unaComanda.ComandasMercaderia)
-                    {
-                        Mercaderia unaMercaderia = await _queryMercaderia.GetMercaderiaById(unaComandaMercaderia.MercaderiaId);
-                        var UnaMercaderiaGetResponse = new MercaderiaGetResponse
-                        {
-                            id = unaComandaMercaderia.MercaderiaId,
-                            nombre = unaMercaderia.Nombre,
-                            Precio = unaMercaderia.Precio,
-                            imagen = unaMercaderia.Imagen,
-                            tipo = new TipoMercaderiaResponse
-                            {
-                                id = unaMercaderia.TipoMercaderiaId,
-                                descripcion = _serviceTipMer.GetTipoMercaderiaById(unaMercaderia.TipoMercaderiaId).Result.Descripcion,
-                            },
-                        };
-                        ListaTipoMercaderiaGetResponse.Add(UnaMercaderiaGetResponse);
-                    }
-                    var unaComandaGetResponse = new ComandaGetResponse
-                    {
-                        id = unaComanda.ComandaId,
-                        mercaderias = ListaTipoMercaderiaGetResponse,
-                        formaEntrega = new FormaEntregaResponse
-                        {
-                            id = unaComanda.FormaEntregaId,
-                            descripcion = _formaDeEntregaService.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
-                        },
-                        PrecioTotal = unaComanda.PrecioTotal,
-                        Fecha = unaComanda.Fecha.ToString("dd/MM/yyyy"),
-                    };
-                    ListaComandaGetResponse.Add(unaComandaGetResponse);
-
+                   List<Comanda> listaComandas = await _query.GetListComanda();
+                   await GetMercaderiaResponse(listaMercaderiaComandaResponse, listaComandaResponse, listaComandas);
                 }
-                return ListaComandaGetResponse;
+                else
+                {
+                    DateTime fecha = DateTime.Parse(fechaString);
+                    List<Comanda> listaComandas = await _query.GetComandasByDate(fecha);
+                    await GetMercaderiaResponse(listaMercaderiaComandaResponse, listaComandaResponse, listaComandas);
+                }
+                return listaComandaResponse;
             }
             catch (ExceptionSintaxError ex)
             {
                 throw new ExceptionSintaxError("Error en la sintaxis ingresada para la fecha: "+ ex.Message);
             }
-
-
         }
 
         public async Task<ComandaGetResponse> GetComandaById(Guid comandaId)
@@ -163,7 +137,7 @@ namespace Application.UseCase
                     {
                         id = unaComandaMercaderia.MercaderiaId,
                         nombre = unaMercaderia.Nombre,
-                        Precio = unaMercaderia.Precio,
+                        Precio = (double)unaMercaderia.Precio,
                         imagen = unaMercaderia.Imagen,
                         tipo = new TipoMercaderiaResponse
                         {
@@ -177,12 +151,12 @@ namespace Application.UseCase
                 {
                     id = unaComanda.ComandaId,
                     mercaderias = ListaTipoMercaderiaGetResponse,
-                    formaEntrega = new FormaEntregaResponse
+                    formaEntrega = new Response.FormaEntrega
                     {
                         id = unaComanda.FormaEntregaId,
                         descripcion = _formaDeEntregaService.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
                     },
-                    PrecioTotal = unaComanda.PrecioTotal,
+                    PrecioTotal = (double)unaComanda.PrecioTotal,
                     Fecha = unaComanda.Fecha.ToString("dd/MM/yyyy"),
 
                 };
@@ -206,24 +180,6 @@ namespace Application.UseCase
             }
             return false;
         }
-
-        private DateTime ParseDatetime(string fechaString)
-        {
-            DateTime fecha;
-            if (DateTime.TryParseExact(fechaString, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
-            {
-                return fecha;
-            }
-            if (DateTime.TryParseExact(fechaString,"dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
-            { return fecha; }
-            if (DateTime.TryParseExact(fechaString, "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
-            { return fecha; }
-            else
-            {
-                throw new ExceptionSintaxError("Fecha inválida, pruebe con dd-mm-aaaa o aaaa-mm-dd");
-            }
-        }
-
         private async Task Verify400SintaxFormaEntrega(int formaEntregaId)
         {
             if (!int.TryParse(formaEntregaId.ToString(), out formaEntregaId)) { throw new ExceptionSintaxError("El tipo de forma de entrega no es un valor válido, pruebe introduciendo un entero"); }
@@ -240,6 +196,38 @@ namespace Application.UseCase
             else
             {
                 throw new ExceptionSintaxError("Una mercaderia es inválida");
+            }
+        }
+
+        private async Task GetMercaderiaResponse (List<MercaderiaComandaResponse> ListaMercaderiaComandaResponse, List<ComandaResponse> ListaComandaResponse, List<Comanda> ListaComandas)
+        {
+            foreach (Comanda unaComanda in ListaComandas)
+            {
+                foreach (ComandaMercaderia unaComandaMercaderia in unaComanda.ComandasMercaderia)
+                {
+                    Mercaderia unaMercaderia = await _queryMercaderia.GetMercaderiaById(unaComandaMercaderia.MercaderiaId);
+                    var unaComandaMercaderiaResponse = new MercaderiaComandaResponse
+                    {
+                        id = unaMercaderia.MercaderiaID,
+                        nombre = unaMercaderia.Nombre,
+                        precio = (double)unaMercaderia.Precio,
+                    };
+                    ListaMercaderiaComandaResponse.Add(unaComandaMercaderiaResponse);
+
+                }
+                var unaComandaResponse = new ComandaResponse
+                {
+                    id = unaComanda.ComandaId.ToString(),
+                    mercaderias = ListaMercaderiaComandaResponse,
+                    formaEntrega = new Response.FormaEntrega
+                    {
+                        id = unaComanda.FormaEntregaId,
+                        descripcion = _formaDeEntregaService.GetFormaEntregaById(unaComanda.FormaEntregaId).Result.Descripcion
+                    },
+                    total = (double)unaComanda.PrecioTotal,
+                    fecha = unaComanda.Fecha.ToString("dd/MM/yyyy"),
+                };
+                ListaComandaResponse.Add(unaComandaResponse);
             }
         }
 

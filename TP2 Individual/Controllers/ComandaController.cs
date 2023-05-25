@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TP2_Individual.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ComandaController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace TP2_Individual.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<ComandaResponse>), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
-        public async Task<IActionResult> GetComandaByDate(string fecha)
+        public async Task<IActionResult> GetComandaByDate(string? fecha)
         {
             try
             {
